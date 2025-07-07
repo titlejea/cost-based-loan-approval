@@ -101,6 +101,13 @@ To convert into monetary value, we assume:
 
 **Optimal threshold = 0.60**, maximizing expected business profit by **+146.60 million THB** (on test set)
 
+### Total Cost by Threshold
+
+This plot shows the trade-off between false approvals and false rejections as we change the threshold.  
+Profit peaks at threshold = 0.60.
+
+![Cost Plot](CostBasedLoanApproval/outputs/plot_threshold_cost.png)
+
 ---
 
 ## Final Model Performance (Threshold = 0.60)
@@ -116,9 +123,14 @@ To convert into monetary value, we assume:
 
 This result reflects a **conservative approval strategy**, favoring **rejecting questionable applicants** over mistakenly approving default risks.
 
----
+### Grouped Feature Importance (Logistic Regression)
 
-## Model Interpretability (LIME)
+This chart visualizes which variables were most influential in the final logistic model.  
+`Grade` dominates the influence, followed by `term`, `home_ownership`, and `employment length`.
+
+![Feature Importance](CostBasedLoanApproval/outputs/plot_grouped_varimp.png)
+
+### Model Interpretability (LIME)
 
 To ensure model transparency and regulatory alignment, we applied **LIME (Local Interpretable Model-agnostic Explanations)** on our Logistic Regression model.
 
@@ -145,7 +157,7 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 ➡This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
 Such **interpretable explanations** are essential for model **transparency**, **auditability**, and potential **manual overrides**.
 
-![LIME Explanation](outputs/lime_explanation.png)
+![LIME Explanation](CostBasedLoanApproval/outputs/lime_explanation.png)
 
 ---
 
@@ -175,26 +187,6 @@ This framing led to better alignment with:
 - CFO and credit risk officer KPIs
 - Real-world P&L considerations
   
----
-
-## Visualizations
-
-### Total Cost by Threshold
-
-This plot shows the trade-off between false approvals and false rejections as we change the threshold.  
-Profit peaks at threshold = 0.60.
-
-![Cost Plot](outputs/plot_threshold_cost.png)
-
----
-
-### Grouped Feature Importance (Logistic Regression)
-
-This chart visualizes which variables were most influential in the final logistic model.  
-`Grade` dominates the influence, followed by `term`, `home_ownership`, and `employment length`.
-
-![Feature Importance](outputs/plot_grouped_varimp.png)
-
 ---
 
 ## 📁 Project Structure
