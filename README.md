@@ -78,7 +78,7 @@ Selected relevant pre-approval features based on domain knowledge:
 
 ### 5. Train-Test Split
 
-- Used custom function `split_data()` to divide data into training and testing sets (80:20)
+- Used custom function `split_data()` to divide data into training and testing sets (70:30)
 
 ### 6. Missing Value Imputation
 
