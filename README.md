@@ -154,7 +154,7 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 | `verification_status = Verified`| Income source verified       | Slightly supports approval (+0.02)    |
 | `sub_grade = C1`                | Mid-tier sub-grade           | Weak rejection signal (−0.01)         |
 
-➡This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
+This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
 Such **interpretable explanations** are essential for model **transparency**, **auditability**, and potential **manual overrides**.
 
 ![LIME Explanation](CostBasedLoanApproval/outputs/lime_explanation.png)
@@ -174,22 +174,10 @@ In high-volume lending, even a small lift in **specificity** can **save millions
 Therefore, the model prioritizes **avoiding false approvals** over maximizing coverage.
 
 We also recommend flagging borderline cases (e.g. 0.55 < probability < 0.65) for **manual review**.
-
----
-
-## Strategic Framing
-
-Rather than optimizing for conventional metrics (accuracy, AUC), this project reframed the task as a **business decision problem**.
-
-> ❝ Every prediction is a financial bet. We optimized for expected monetary gain, not just model score. ❞
-
-This framing led to better alignment with:
-- CFO and credit risk officer KPIs
-- Real-world P&L considerations
   
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 CostBasedLoanApproval/
@@ -228,11 +216,15 @@ CostBasedLoanApproval/
 
 ## Key Learnings
 
+> ❝ Every prediction is a financial bet. We optimized for expected monetary gain, not just model score. ❞
+
 - **Business understanding is crucial**: Translating misclassifications into monetary costs led to better decision-making than optimizing for AUC alone.
 - **Model interpretability matters**: Logistic Regression’s transparency is invaluable in real-world, regulated settings.
 - **Sensitivity vs Specificity trade-off**: A high sensitivity (XGBoost) may approve too many risky loans. Logistic Regression provides a better balance.
 - **Threshold tuning beats model switching**: A tuned simple model can outperform a complex model in terms of **business value**.
-- **Portfolio-ready workflow**: Modular code and saved outputs made the pipeline reproducible and easy to maintain/share.
+- **Business alignment**: This approach aligns with:
+  - **CFO and credit risk officer KPIs**
+  - **Real-world P&L considerations**
 
 ---
 
