@@ -71,7 +71,7 @@ To simulate real-world profit/loss:
 
 - Approving a good loan (TP: True Positive): **+15% return**
 - Approving a bad loan (FP: False Positive): **−85% loss**
-- Rejecting a good loan (FN: False Negative): **−3% missed gain**
+- Rejecting a good loan (FN: False Negative): **−3% opportunity cost (lost potential return)**
 
 ### Total Cost Formula
 
@@ -116,6 +116,65 @@ To convert into monetary value, we assume:
 
 This result reflects a **conservative approval strategy**, favoring **rejecting questionable applicants** over mistakenly approving default risks.
 
+---
+
+## Model Interpretability (LIME)
+
+To ensure model transparency and regulatory alignment, we applied **LIME (Local Interpretable Model-agnostic Explanations)** on our Logistic Regression model.
+
+LIME helps explain *individual predictions*, especially for borderline cases near the decision threshold.
+
+### Case Example: Rejected Applicant  
+**Prediction**: `bad_loan`  
+**Probability**: 0.59  
+**Explanation Fit**: 0.06
+
+| Feature                          | Value / Bin                  | Contribution to Prediction (`bad_loan`) |
+|----------------------------------|------------------------------|------------------------------------------|
+| `fico_range_high` (689–714)     | Moderate credit score        | Strongly supports rejection (−0.20)    |
+| `fico_range_low` (685–710)      | Moderate credit score        | Pulls toward approval (+0.21)         |
+| `application_type = Individual` | Single applicant             | Supports approval (+0.08)             |
+| `delinq_2yrs ≤ 3.5`             | Few delinquencies            | Supports rejection (−0.07)            |
+| `pub_rec ≤ 2.5`                 | Low public record count      | Supports approval (+0.06)             |
+| `total_acc = 16–24`             | Moderate account count       | Supports rejection (−0.05)            |
+| `emp_length = 10+ years`        | Long employment              | Slightly supports approval (+0.03)    |
+| `revol_bal = 5,944–11,546`      | Medium revolving balance     | Minor rejection signal (−0.01)        |
+| `verification_status = Verified`| Income source verified       | Slightly supports approval (+0.02)    |
+| `sub_grade = C1`                | Mid-tier sub-grade           | Weak rejection signal (−0.01)         |
+
+➡This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
+Such **interpretable explanations** are essential for model **transparency**, **auditability**, and potential **manual overrides**.
+
+![LIME Explanation](outputs/lime_explanation.png)
+
+---
+
+## Business Impact of Misclassifications
+
+We translated classification errors into **business risks** to better align the model with stakeholder goals:
+
+| Type                | Business Consequence                                      |
+|---------------------|-----------------------------------------------------------|
+| False Positive (FP) | Approving bad loans → **Direct capital loss**            |
+| False Negative (FN) | Rejecting good loans → **Lost profit / opportunity cost**|
+
+In high-volume lending, even a small lift in **specificity** can **save millions** in defaults.  
+Therefore, the model prioritizes **avoiding false approvals** over maximizing coverage.
+
+We also recommend flagging borderline cases (e.g. 0.55 < probability < 0.65) for **manual review**.
+
+---
+
+## Strategic Framing
+
+Rather than optimizing for conventional metrics (accuracy, AUC), this project reframed the task as a **business decision problem**.
+
+> ❝ Every prediction is a financial bet. We optimized for expected monetary gain, not just model score. ❞
+
+This framing led to better alignment with:
+- CFO and credit risk officer KPIs
+- Real-world P&L considerations
+  
 ---
 
 ## Visualizations
