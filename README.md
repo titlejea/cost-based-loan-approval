@@ -44,6 +44,59 @@ You can download it manually from LendingClub:
 
 ---
 
+## Data Cleaning Process
+
+This section outlines how raw LendingClub data was processed into a usable form for modeling:
+
+### 1. Sampling and NA Filtering
+
+- Loaded 1,000,000 rows from `accepted_2007_to_2018Q4.csv`
+- Randomly sampled 200,000 rows to reduce computation
+- Dropped columns that contain **only NA values**
+
+### 2. Feature Selection
+
+Selected relevant pre-approval features based on domain knowledge:
+
+- **Loan details**: `loan_amnt`, `term`, `grade`, `sub_grade`
+- **Borrower info**: `emp_length`, `home_ownership`, `annual_inc`, `verification_status`
+- **Loan purpose**: `purpose`, `application_type`
+- **Credit history**: `dti`, `revol_util`, `revol_bal`, `delinq_2yrs`, `open_acc`, `total_acc`, `pub_rec`, `pub_rec_bankruptcies`, `fico_range_low`, `fico_range_high`
+- Extracted `issue_month` from `issue_d` (dropped original date field)
+
+### 3. Target Label Creation
+
+- `loan_status` was recoded into:
+  - `good_loan` = Fully Paid
+  - `bad_loan` = Charged Off / Default
+- All other statuses were excluded
+
+### 4. Type Conversion
+
+- Converted relevant variables to `factor` type (e.g., `term`, `grade`, `emp_length`)
+- Parsed issue date into `issue_month`
+
+### 5. Train-Test Split
+
+- Used custom function `split_data()` to divide data into training and testing sets (80:20)
+
+### 6. Missing Value Imputation
+
+- Saved median values of `dti` and `revol_util` for consistent imputation
+- `emp_length`: created "unknown" category for missing values
+- Applied median imputation for numeric features
+
+### 7. Saved Outputs
+
+Saved the following files for use in later scripts:
+- `data/train.rds`
+- `data/test.rds`
+- `data/loan_data.rds`
+- `data/dti_median.rds`
+- `data/revol_median.rds`
+
+---
+
 ## Modeling Approach
 
 ### Models Trained
