@@ -281,5 +281,5 @@ CostBasedLoanApproval/
 
 ---
 
-✉️ Created by Title Jearrajinda — 2025  
+Created by Title Jearrajinda — 2025  
 For questions, feel free to open an issue or reach out.
