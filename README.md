@@ -204,14 +204,18 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 | `delinq_2yrs ≤ 3.5`             | Few delinquencies            | Contradicts 'bad_loan'           |
 | `pub_rec ≤ 2.5`                 | Low public record count      | Supports 'bad_loan'             |
 | `total_acc = 16–24`             | Moderate account count       | Contradicts 'bad_loan'            |
-| `emp_length = 10+ years`        | Long employment              | Slightly supports 'bad_loan'    |
+| `emp_length = 10+ years`        | Long employment              | Supports 'bad_loan'    |
 | `revol_bal = 5,944–11,546`      | Medium revolving balance     | Slightly contradicts 'bad_loan'        |
 | `verification_status = Verified`| Income source verified       | Slightly supports 'bad_loan'    |
 | `sub_grade = C1`                | Mid-tier sub-grade           | Slightly contradicts 'bad_loan'         |
 
 
-This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
-Such **interpretable explanations** are essential for model **transparency**, **auditability**, and potential **manual overrides**.
+LIME helps uncover the model’s “intuition” — the complex and sometimes counter-intuitive reasoning it learns from data.
+
+Think of the model as a seasoned loan officer. When evaluating a borderline applicant, it considers both obvious positives (e.g., clean payment history) and subtle risk signals. Based on patterns learned from thousands of past cases, it may spot hidden danger — such as a credit score range historically linked to defaults — and lean toward rejection.
+
+This mirrors real-world decision-making: while the applicant may look good on the surface, the model gives more weight to patterns of risk it's seen before.
+LIME explains this nuanced process, giving stakeholders confidence to audit or override decisions if needed.
 
 ---
 
