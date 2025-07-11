@@ -194,6 +194,8 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 **Probability**: 0.59  
 **Explanation Fit**: 0.06
 
+![LIME Explanation](CostBasedLoanApproval/outputs/lime_explanation.png)
+
 | Feature                          | Value / Bin                  | Contribution to Prediction (`bad_loan`) |
 |----------------------------------|------------------------------|------------------------------------------|
 | `fico_range_high` (689–714)     | Moderate credit score        | Strongly supports rejection (−0.20)    |
@@ -210,8 +212,6 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 
 This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
 Such **interpretable explanations** are essential for model **transparency**, **auditability**, and potential **manual overrides**.
-
-![LIME Explanation](CostBasedLoanApproval/outputs/lime_explanation.png)
 
 ---
 
