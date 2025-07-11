@@ -202,12 +202,12 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 | `fico_range_low` (685–710)      | Moderate credit score        | Strongly supports 'bad_loan'         |
 | `application_type = Individual` | Single applicant             | Supports 'bad_loan'             |
 | `delinq_2yrs ≤ 3.5`             | Few delinquencies            | Contradicts 'bad_loan'           |
-| `pub_rec ≤ 2.5`                 | Low public record count      | Supports 'bad_loan' (pushes toward rejection)             |
-| `total_acc = 16–24`             | Moderate account count       | Contradicts 'bad_loan' (pushes toward approval)            |
-| `emp_length = 10+ years`        | Long employment              | Slightly supports 'bad_loan' (pushes toward rejection)    |
-| `revol_bal = 5,944–11,546`      | Medium revolving balance     | Slightly contradicts 'bad_loan' (pushes toward approval)        |
-| `verification_status = Verified`| Income source verified       | Slightly supports 'bad_loan' (pushes toward rejection)    |
-| `sub_grade = C1`                | Mid-tier sub-grade           | Slightly contradicts 'bad_loan' (pushes toward approval)         |
+| `pub_rec ≤ 2.5`                 | Low public record count      | Supports 'bad_loan'             |
+| `total_acc = 16–24`             | Moderate account count       | Contradicts 'bad_loan'            |
+| `emp_length = 10+ years`        | Long employment              | Slightly supports 'bad_loan'    |
+| `revol_bal = 5,944–11,546`      | Medium revolving balance     | Slightly contradicts 'bad_loan'        |
+| `verification_status = Verified`| Income source verified       | Slightly supports 'bad_loan'    |
+| `sub_grade = C1`                | Mid-tier sub-grade           | Slightly contradicts 'bad_loan'         |
 
 
 This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
