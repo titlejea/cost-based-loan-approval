@@ -129,7 +129,7 @@ To simulate real-world profit/loss:
 ### Total Cost Formula
 
 ```
-Total_Cost = (TP * 15%) - (FP * 85%) - (FN * 3%)
+Total_Cost = Avg. Loan Amount * [(TP * 15%) - (FP * 85%) - (FN * 3%)]
 ```
 
 To convert into monetary value, we assume:  
