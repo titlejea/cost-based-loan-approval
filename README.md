@@ -271,13 +271,11 @@ CostBasedLoanApproval/
 
 > ❝ Every prediction is a financial bet. We optimized for expected monetary gain, not just model score. ❞
 
-- **Business understanding is crucial**: Translating misclassifications into monetary costs led to better decision-making than optimizing for AUC alone.
-- **Model interpretability matters**: Logistic Regression’s transparency is invaluable in real-world, regulated settings.
-- **Sensitivity vs Specificity trade-off**: A high sensitivity (XGBoost) may approve too many risky loans. Logistic Regression provides a better balance.
-- **Threshold tuning beats model switching**: A tuned simple model can outperform a complex model in terms of **business value**.
-- **Business alignment**: This approach aligns with:
-  - **CFO and credit risk officer KPIs**
-  - **Real-world P&L considerations**
+- **Business understanding is crucial**: Translating misclassifications into monetary costs led to better decision-making than standard model tuning.
+- **Model interpretability matters**: The choice of model depends on business priorities. While some use cases demand the highest possible accuracy, others — require transparency and the ability to clearly explain why a prediction was made. This makes interpretable models like Logistic Regression particularly valuable.
+- **Sensitivity vs Specificity trade-off**: A model with extremely high sensitivity, like XGBoost, may catch many good customers but also approve too many risky ones (false positives).
+In contrast, Logistic Regression achieves higher specificity, reducing bad loan approvals — which is more aligned with financial risk management.
+- **Business alignment**: This approach not only creates a technically sound model but also directly addresses the KPIs of finance and risk management departments because it can answer questions in the language of 'Profit & Loss' (P&L).
 
 ---
 
