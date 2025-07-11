@@ -198,16 +198,16 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 
 | Feature                          | Value / Bin                  | Contribution to Prediction (`bad_loan`) |
 |----------------------------------|------------------------------|------------------------------------------|
-| `fico_range_high` (689–714)     | Moderate credit score        | Strongly supports rejection (−0.20)    |
-| `fico_range_low` (685–710)      | Moderate credit score        | Pulls toward approval (+0.21)         |
-| `application_type = Individual` | Single applicant             | Supports approval (+0.08)             |
-| `delinq_2yrs ≤ 3.5`             | Few delinquencies            | Supports rejection (−0.07)            |
-| `pub_rec ≤ 2.5`                 | Low public record count      | Supports approval (+0.06)             |
-| `total_acc = 16–24`             | Moderate account count       | Supports rejection (−0.05)            |
-| `emp_length = 10+ years`        | Long employment              | Slightly supports approval (+0.03)    |
-| `revol_bal = 5,944–11,546`      | Medium revolving balance     | Minor rejection signal (−0.01)        |
-| `verification_status = Verified`| Income source verified       | Slightly supports approval (+0.02)    |
-| `sub_grade = C1`                | Mid-tier sub-grade           | Weak rejection signal (−0.01)         |
+| `fico_range_high` (689–714)     | Moderate credit score        | Contradicts 'bad_loan' (pushes toward approval)    |
+| `fico_range_low` (685–710)      | Moderate credit score        | Supports 'bad_loan' (pushes toward rejection)         |
+| `application_type = Individual` | Single applicant             | Supports 'bad_loan' (pushes toward rejection)             |
+| `delinq_2yrs ≤ 3.5`             | Few delinquencies            | Contradicts 'bad_loan' (pushes toward approval)            |
+| `pub_rec ≤ 2.5`                 | Low public record count      | Supports 'bad_loan' (pushes toward rejection)             |
+| `total_acc = 16–24`             | Moderate account count       | Contradicts 'bad_loan' (pushes toward approval)            |
+| `emp_length = 10+ years`        | Long employment              | Supports 'bad_loan' (pushes toward rejection)    |
+| `revol_bal = 5,944–11,546`      | Medium revolving balance     | Contradicts 'bad_loan' (pushes toward approval)        |
+| `verification_status = Verified`| Income source verified       | Supports 'bad_loan' (pushes toward rejection)    |
+| `sub_grade = C1`                | Mid-tier sub-grade           | Contradicts 'bad_loan' (pushes toward approval)         |
 
 
 This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
