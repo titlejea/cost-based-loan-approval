@@ -207,6 +207,7 @@ LIME helps explain *individual predictions*, especially for borderline cases nea
 | `verification_status = Verified`| Income source verified       | Slightly supports approval (+0.02)    |
 | `sub_grade = C1`                | Mid-tier sub-grade           | Weak rejection signal (−0.01)         |
 
+
 This borderline case had mixed signals: strong credit score issues pushed it toward rejection, while stable income and employment helped a bit.  
 Such **interpretable explanations** are essential for model **transparency**, **auditability**, and potential **manual overrides**.
 
